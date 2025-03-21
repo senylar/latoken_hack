@@ -9,6 +9,9 @@ load_dotenv()
 openai_api_key = os.getenv('OPENAI_API_KEY')
 telegram_bot_token = os.getenv('telegram_bot_token')
 knowledge_base_path = os.getenv('knowledge_base_path')
+DATABASE = os.getenv('db_path')
+assistant_id = 'asst_UyP56aVaVRpdHu6iwtCJkjtj'
+admins = [149378045]
 
 with open(knowledge_base_path, 'r', encoding='utf-8') as file:
     knowledge_base_promt = file.read()

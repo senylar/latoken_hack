@@ -2,11 +2,12 @@
 
 import os
 import asyncio
+from .chat_api_scheme import ChatAPI
 
 import aiofiles
 from openai import AsyncOpenAI
 
-class OpenAIChatGPT:
+class OpenAIChatGPT(ChatAPI):
     def __init__(self, api_key: str, knowledge_base_promt: str):
         """
         Initialize the OpenAIChatGPT class.
@@ -61,11 +62,13 @@ class OpenAIChatGPT:
         )
         return response.choices[0].message.content
 
+
+
 # Example usage:
 async def main():
     from config import openai_api_key
     api_key = openai_api_key
-    knowledge_base_path = "/Users/gggg/meetup/latoken_hack/knowledge_base.txt"
+    knowledge_base_path = "/kb/knowledge_base.txt"
     chatgpt = OpenAIChatGPT(api_key, knowledge_base_path)
     user_query = "Какими качествами я должен обладать?"
     response = await chatgpt.get_response(user_query)
